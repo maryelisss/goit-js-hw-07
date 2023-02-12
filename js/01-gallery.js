@@ -30,14 +30,13 @@ function modalOpen(evt){
     if (!evt.target.classList.contains('gallery__image')){
         return;
     };
+    evt.preventDefault();
     const instance = basicLightbox.create(`
     <img src="${evt.target.dataset.source}" width="800" height="600">
 `)
 
 instance.show()
 
-
-// console.log('++++');
-}
+};
 
 
