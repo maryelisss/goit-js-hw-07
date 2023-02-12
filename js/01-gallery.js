@@ -8,6 +8,7 @@ const galleryElements = createGalleryElements(galleryItems);
 
 galleryContainer.insertAdjacentHTML('beforeend', galleryElements);
 
+galleryContainer.addEventListener('click', modalOpen);
 
 function createGalleryElements (gallery) {
     return gallery.map(({preview, original, description}) => {
@@ -16,7 +17,7 @@ function createGalleryElements (gallery) {
     <img
       class="gallery__image"
       src="${preview}"
-      data-source="large-image.jpg"
+      data-source="${original}"
       alt="${description}"
     />
   </a>
@@ -25,6 +26,18 @@ function createGalleryElements (gallery) {
 }).join(" ");
     };
 
+function modalOpen(evt){
+    if (!evt.target.classList.contains('gallery__image')){
+        return;
+    };
+    const instance = basicLightbox.create(`
+    <img src="${evt.target.dataset.source}" width="800" height="600">
+`)
 
+instance.show()
+
+
+// console.log('++++');
+}
 
 
