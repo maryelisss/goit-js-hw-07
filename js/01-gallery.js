@@ -32,11 +32,22 @@ function modalOpen(evt){
     };
     evt.preventDefault();
     const instance = basicLightbox.create(`
-    <img src="${evt.target.dataset.source}" width="800" height="600">
-`)
+    <img src="${evt.target.dataset.source}" width="800" height="600">`)
 
-instance.show()
+
+instance.show();
+
+window.addEventListener('keydown', onEscKeyPress);
+
+function onEscKeyPress (evt) {
+  if (evt.code === 'Escape') {
+  modalClose();
+  }
+ };
+
+function modalClose () {
+instance.close()
+window.removeEventListener('keydown', onEscKeyPress);
+}
 
 };
-
-
