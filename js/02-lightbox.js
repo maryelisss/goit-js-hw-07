@@ -20,4 +20,11 @@ function createGalleryElements (gallery) {
 }).join(" ");
     };
 
-function galleryOpen () {};    
+function galleryOpen (evt) {
+        if (!evt.target.classList.contains('gallery__image')){
+        return;
+    };
+    evt.preventDefault();
+    var lightbox = new SimpleLightbox('.gallery a', {captiomDelay: 250, captionsData: "alt"});
+};    
+
