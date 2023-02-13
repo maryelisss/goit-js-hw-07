@@ -35,19 +35,16 @@ function modalOpen(evt){
     <img src="${evt.target.dataset.source}" width="800" height="600">`)
 
 
-instance.show();
-
-window.addEventListener('keydown', onEscKeyPress);
+instance.show(() => window.addEventListener('keydown', onEscKeyPress));
 
 function onEscKeyPress (evt) {
   if (evt.code === 'Escape') {
   modalClose();
   }
- };
+  };
 
 function modalClose () {
-instance.close()
-window.removeEventListener('keydown', onEscKeyPress);
+instance.close(() => window.removeEventListener('keydown', onEscKeyPress) );
 }
 
 };
